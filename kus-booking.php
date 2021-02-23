@@ -11,7 +11,7 @@
  */
 
 /**
- * Make sure what wordpress is loaded
+ * Make sure that wordpress is loaded
  */
 if( ! defined('ABSPATH') )
 {

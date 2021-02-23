@@ -2,6 +2,11 @@
 
 namespace Kus\Booking;
 
+/**
+ * class PluginHelper
+ * 
+ * @author Kus Developer
+ */
 class PluginHelper
 {
     /**

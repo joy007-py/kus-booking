@@ -171,12 +171,18 @@ class Booking
         register_post_type( "service_bookings", $args );
     }
 
+    /**
+     * Runs on plugin activation
+     */
     public function onActivate()
     {
         $this->addServiceBookingCustomPostType();
         \flush_rewrite_rules();
     }
 
+    /**
+     * Runs on plugin deactivation
+     */
     public function onDeactivate()
     {
         unregister_post_type( 'service_bookings' );
