@@ -18,6 +18,8 @@ if( ! defined('ABSPATH') )
     exit;
 }
 
+define('KUS_BOOKING_PLUGIN_FILE_DIR', __FILE__);
+
 require __DIR__ . '/vendor/autoload.php';
 
 use  Kus\Booking\Booking;

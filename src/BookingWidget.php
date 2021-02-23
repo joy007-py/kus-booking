@@ -43,11 +43,11 @@ class BookingWidget extends \WP_Widget
      */
     public function buttonHtml()
     {
-        if(PluginHelper::isCurrentPostTypeIsService())
+        if( PluginHelper::isCurrentPostTypeIsService() )
         {
             ?>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Book This Service
+                Book This Service
             </button>
             <?php
         }
