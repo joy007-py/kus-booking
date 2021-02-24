@@ -7,7 +7,7 @@
  * Requires PHP: 7.0
  * Description: A small plugin for handle service booking
  * Author: Kus Software
- * Author URI: http://kusdemos.com
+ * Author URI: http://kussoft.com
  */
 
 /**
@@ -19,6 +19,7 @@ if( ! defined('ABSPATH') )
 }
 
 define('KUS_BOOKING_PLUGIN_FILE_DIR', __FILE__);
+define('KUS_BOOKING_POST_TYPE_TO_WORK_WITH', 'service');
 
 require __DIR__ . '/vendor/autoload.php';
 
@@ -29,6 +30,6 @@ function fireUpKusBookingPlugin() {
 }
 
 /**
- * Let's begin!
+ * Let's go!
  */
 fireUpKusBookingPlugin();

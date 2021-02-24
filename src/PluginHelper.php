@@ -23,7 +23,7 @@ class PluginHelper
             return false;
         }
 
-        return ($post_type === 'service') ? true : false;
+        return ($post_type === KUS_BOOKING_POST_TYPE_TO_WORK_WITH) ? true : false;
     }
 
     /**
@@ -36,7 +36,7 @@ class PluginHelper
         $current_service_title = \get_the_title();
 
         $args = array(  
-            'post_type' => 'service',
+            'post_type' => KUS_BOOKING_POST_TYPE_TO_WORK_WITH,
             'post_status' => 'publish',
         );
     
