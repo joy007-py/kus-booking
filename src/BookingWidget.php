@@ -46,9 +46,7 @@ class BookingWidget extends \WP_Widget
         if( PluginHelper::isCurrentPostTypeIsService() )
         {
             ?>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Book This Service
-            </button>
+                <button id="kus_booking_btn_widget" class="kus_booking_widget_btn">Book Service</button>
             <?php
         }
     }

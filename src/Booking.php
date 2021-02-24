@@ -89,42 +89,43 @@ class Booking
         if (PluginHelper::isCurrentPostTypeIsService())
         {
             ?>
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="kus_booking_form_header">
-                                <?php echo \apply_filters('kus_booking_popup_header', 'Book a service') ?>
-                            </h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                        <form method="POST" id="kus_booking_form" data-url = <?php echo \admin_url('admin-ajax.php') ?>>
-                            <div class="mb-3">
+                <!-- The Modal -->
+                <div id="kus_booking_form_modal" class="kus_booking_form">
+                    <!-- Modal content -->
+                    <div class="modal-content" id="kus_booking_modal_content">
+
+                        <h5 class="modal-title" id="kus_booking_form_header">
+                            <?php echo \apply_filters('kus_booking_popup_header', 'Book a service') ?>
+                        </h5>
+                        <span class="close" id="kus_booking_form_modal_close">&times;</span>
+                        <form method="POST" id="kus_booking_form" data-url = <?php echo \admin_url('admin-ajax.php') ?>>       
+                            <div class="">
                                 <label for="serviceName" class="form-label">Or choose Service</label>
                                 <?php do_action('kus_booking_dropdown_service_list') ?>
                             <div>
-                            <div class="mb-3">
+                            <div class="">
                                 <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="" name="kus_booking_name">
+                                <input type="text" class="form-control" name="kus_booking_name">
                             </div>
-                            <div class="mb-3">
+                            <div class="">
                                 <label for="email" class="form-label">Email address</label>
                                 <input type="email" class="form-control" name="kus_booking_email">
                             </div>
-                            <div class="mb-3">
+                            <div class="">
                                 <label for="date" class="form-label">Booking Date</label>
                                 <input type="date" class="form-control" name="kus_booking_date">
                             </div>
-                            <button type="submit" class="btn btn-primary">Book</button>
+                            <div class="">
+                                <label for="date" class="form-label">Booking Time</label>
+                                <input type="time" class="form-control" name="kus_booking_time">
+                            </div>
+                            <div class="">
+                                <label for="date" class="form-label">Message</label>
+                                <textarea name="kus_booking_message" rows="5" cols="20"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" id="kus_booking_btn_submit">Book</button>
                         </form>
-                        </div>
-                        <div class="modal-footer">
-                            <!--
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            -->
-                        </div>
-                        </div>
                     </div>
                 </div>
             <?php
@@ -157,7 +158,9 @@ class Booking
         $service_title = '#Booking For - ' . trim($formData->book_title);
         $name = trim($formData->name);
         $email = trim($formData->email);
-        $date = trim($formData->date);
+        $date = $formData->date;
+        $time = $formData->time;
+        $message = $formData->message;
 
         $new_booking = array(
             'post_title' => $service_title,
@@ -184,6 +187,8 @@ class Booking
         add_post_meta( $post_id, 'name', $name );
         add_post_meta( $post_id, 'email', $email );
         add_post_meta( $post_id, 'date', $date );
+        add_post_meta( $post_id, 'time', $time );
+        add_post_meta( $post_id, 'message', $message );
 
         do_action(
             'kus_booking_after_booked_confirm',
@@ -192,7 +197,9 @@ class Booking
                 'service_title' => $service_title,
                 'name' => $name,
                 'email' => $email,
-                'date' => $date
+                'date' => $date,
+                'time' => $time,
+                'message' => $message
             )
         );
 
