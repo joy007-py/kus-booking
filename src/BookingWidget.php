@@ -46,7 +46,7 @@ class BookingWidget extends \WP_Widget
         if( PluginHelper::isCurrentPostTypeIsService() )
         {
             ?>
-                <button id="kus_booking_btn_widget" class="kus_booking_widget_btn">Book Service</button>
+                <button id="kus_booking_btn_widget" class="kus_booking_widget_btn">Book an Appointment</button>
             <?php
         }
     }

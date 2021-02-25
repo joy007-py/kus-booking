@@ -39,6 +39,8 @@ class sendEmail
         $body .= '<p> Name :'. $formData['name']  .'</p>';
         $body .= '<p> Email : '. $formData['email'] .'</p>';
         $body .= '<p> Date : '. $formData['date'] .'</p>';
+        $body .= '<p> Time : '. $formData['time'] .'</p>';
+        $body .= '<p> Message : '. $formData['message'] .'</p>';
 
         return $body;
     }

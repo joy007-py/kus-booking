@@ -36,7 +36,16 @@ document.getElementById("kus_booking_form").addEventListener("submit", (e) => {
 
       if(data.success)
       {
-         
+         while (modalContet.firstChild) {
+            modalContet.removeChild(modalContet.firstChild);
+         }
+         const h4 = document.createElement("h4");
+         h4.innerText = 'Thank You.';
+         modalContet.appendChild(h4);
+
+         setTimeout(function(){ 
+            location.reload();
+         }, 2000);
       }
       console.log('Success:', data);
    })
